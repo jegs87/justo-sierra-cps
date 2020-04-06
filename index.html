@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+
+	<title></title>
+
+	
+	<script>
+		
+		function getUrlVars() {
+		    var vars = {};
+		    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		        vars[key] = value;
+		    });
+		    return vars;
+		}
+
+		let cp = getUrlVars()['cp'];
+
+
+		let CP_06400 = ['Santa María la Ribera']
+		let CP_06430 = ['Santa María Insurgentes'];
+		let CP_06450 = ['Atlampa']
+		let CP_06470 = ['San Rafael']
+		let CP_06500 = ['Cuauhtémoc']
+
+		if (cp == '06400') {
+			document.write(CP_06400);
+		}
+		
+		/*
+		let requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+		let request = new XMLHttpRequest();
+
+		request.open('GET', requestURL);
+		request.responseType = 'text';
+		request.send();
+
+		*/
+
+
+        
+    </script>
+
+</head>
+<body>
+	
+	<p>Ingresa un Código Postal</p>
+	<form>
+		<input type="text" name="cp">
+		<input type="submit" />
+	</form>
+
+</body>
+</html>
