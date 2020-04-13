@@ -1,56 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/yahoo/pure-release/v0.6.0/pure-min.css">
+    <link rel="stylesheet" href="auto-complete.css">
+</head>
+<body>
+    <p>Ingresa un Código Postal</p>
+    <form onsubmit="return false;" class="pure-form">
+        <input id="hero-demo" autofocus type="text" name="q" placeholder="">
+    </form>
 
-	<title></title>
+    <script src="auto-complete.js"></script>
+    <script>
+        let id = [1];
 
-	
-	<script>
-		
-		function getUrlVars() {
-		    var vars = {};
-		    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-		        vars[key] = value;
-		    });
-		    return vars;
-		}
+        const spreadsheetID = "17VvH1RfRZ4s9RndPTPJqqVJD1hApRbS2MYFJFPoaRDE";
+        const data = "https://spreadsheets.google.com/feeds/list/' + spreadsheetID + '/6/public/values?alt=json";
+        let json = JSON.stringify(data, ['author', 'name']);
 
-		let cp = getUrlVars()['cp'];
+        
 
+        alert(json[id]);
+        
 
-		let CP_06400 = ['Santa María la Ribera']
-		let CP_06430 = ['Santa María Insurgentes'];
-		let CP_06450 = ['Atlampa']
-		let CP_06470 = ['San Rafael']
-		let CP_06500 = ['Cuauhtémoc']
-
-		if (cp == '06400') {
-			document.write(CP_06400);
-		}
-		
-		/*
-		let requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
-		let request = new XMLHttpRequest();
-
-		request.open('GET', requestURL);
-		request.responseType = 'text';
-		request.send();
-
-		*/
-
+        let demo1 = new autoComplete({
+            selector: '#hero-demo',
+            minChars: 1,
+            source: function(term, suggest){
+                term = term.toLowerCase();
+                let choices = ['20000', '20001', '30001', '30002', '40000', '40001', '50000', '50001', '60001', '60002', '70000', '70001', '80001', '80002', '90000', '90001'];
+                let suggestions = [];
+                for (i=0;i<choices.length;i++)
+                    if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                suggest(suggestions);
+            }
+        });
 
         
     </script>
-
-</head>
-<body>
-	
-	<p>Ingresa un Código Postal</p>
-	<form>
-		<input type="text" name="cp">
-		<input type="submit" />
-	</form>
-
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js" async defer></script>
 </body>
 </html>
+
